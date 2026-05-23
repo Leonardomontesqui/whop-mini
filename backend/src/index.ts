@@ -11,7 +11,10 @@ import { session } from "./store.ts";
 initSchema();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const UPLOAD_DIR = path.resolve(__dirname, "..", "uploads");
+const DATA_DIR = process.env.DATA_DIR
+  ? path.resolve(process.env.DATA_DIR)
+  : path.resolve(__dirname, "..");
+const UPLOAD_DIR = path.join(DATA_DIR, "uploads");
 if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
 const upload = multer({
@@ -31,7 +34,17 @@ const upload = multer({
 });
 
 const app = express();
-app.use(cors());
+const corsOrigin = process.env.CORS_ORIGIN;
+app.use(
+  cors(
+    corsOrigin
+      ? {
+          origin: corsOrigin.split(",").map((o) => o.trim()).filter(Boolean),
+          credentials: true,
+        }
+      : {},
+  ),
+);
 app.use(express.json());
 app.use("/uploads", express.static(UPLOAD_DIR, { maxAge: "1h" }));
 
