@@ -100,14 +100,14 @@ export default function NewBountyPage() {
   if (loadError) {
     return (
       <AppShell>
-        <div className="max-w-2xl mx-auto px-6 py-12 text-zinc-500 text-sm">{loadError}</div>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-12 text-zinc-500 text-sm">{loadError}</div>
       </AppShell>
     );
   }
 
   return (
     <AppShell>
-      <div className="max-w-2xl mx-auto px-6 py-8">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         <Link
           href={company ? `/company/${company.id}` : "/home"}
           className="inline-flex items-center gap-1.5 text-sm text-zinc-400 hover:text-zinc-200 mb-4"

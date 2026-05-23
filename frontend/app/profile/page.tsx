@@ -63,7 +63,7 @@ export default function ProfilePage() {
   return (
     <AppShell>
       <div className="max-w-3xl mx-auto">
-        <div className="px-6 pt-8 flex items-start justify-between">
+        <div className="px-4 sm:px-6 pt-6 sm:pt-8 flex items-start justify-between">
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 via-orange-400 to-orange-600 flex items-center justify-center text-4xl">
             {me?.avatarEmoji ?? "🐷"}
           </div>
@@ -75,7 +75,7 @@ export default function ProfilePage() {
           </button>
         </div>
 
-        <div className="px-6">
+        <div className="px-4 sm:px-6">
 
           <div className="mt-3">
             <h1 className="text-xl font-bold text-zinc-100">{me?.name ?? "—"}</h1>
@@ -114,7 +114,7 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        <div className="mt-6 border-b border-[#1f1f23] px-6">
+        <div className="mt-6 border-b border-[#1f1f23] px-4 sm:px-6 overflow-x-auto">
           <div className="flex">
             {TABS.map((tab) => {
               const badge =
@@ -144,7 +144,7 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        <div className="px-6 py-6">
+        <div className="px-4 sm:px-6 py-6">
           {loading ? (
             <div className="text-center py-16 text-zinc-500 text-sm">Loading…</div>
           ) : activeTab === "Posted" ? (

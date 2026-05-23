@@ -41,14 +41,14 @@ export default function CreateCompanyPage() {
 
   return (
     <AppShell>
-      <div className="max-w-2xl mx-auto px-6 py-8">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         <div className="flex items-center gap-2 text-[#ff5c1f] mb-2">
           <Sparkles size={18} />
           <span className="text-sm font-semibold uppercase tracking-wider">
             New company
           </span>
         </div>
-        <h1 className="text-3xl font-bold mb-1">Hey, register a company</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold mb-1">Hey, register a company</h1>
         <p className="text-zinc-400 mb-8">
           A company is where you post bounties from. {me?.name} will be its owner.
         </p>

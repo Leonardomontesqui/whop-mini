@@ -46,14 +46,14 @@ export default function HomePage() {
 
   return (
     <AppShell>
-      <div className="max-w-3xl mx-auto px-6 py-6">
-        <div className="flex items-center justify-between mb-5">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-5 sm:py-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
           <h1 className="text-xl font-semibold flex items-center gap-2">
             Open bounties
             <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
           </h1>
 
-          <div className="flex items-center gap-1 bg-[#141416] border border-[#1f1f23] rounded-full p-1">
+          <div className="flex items-center gap-1 bg-[#141416] border border-[#1f1f23] rounded-full p-1 self-start sm:self-auto">
             {TABS.map((tab) => (
               <button
                 key={tab}
@@ -78,12 +78,13 @@ export default function HomePage() {
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 via-orange-400 to-orange-600 flex items-center justify-center text-base shrink-0">
               {me?.avatarEmoji ?? "🐷"}
             </div>
-            <div className="flex-1 text-zinc-500 text-sm">
-              Got work that needs doing?{" "}
+            <div className="flex-1 min-w-0 text-zinc-500 text-sm">
+              <span className="hidden sm:inline">Got work that needs doing? </span>
               <span className="text-zinc-300">Register a company to post bounties.</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#ff5c1f] text-white text-sm font-semibold">
-              <Building2 size={14} /> New company
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#ff5c1f] text-white text-sm font-semibold shrink-0">
+              <Building2 size={14} />
+              <span className="hidden sm:inline">New company</span>
             </div>
           </div>
         </Link>

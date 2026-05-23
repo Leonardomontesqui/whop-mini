@@ -85,7 +85,7 @@ export default function TaskDetailPage() {
 
   return (
     <AppShell>
-      <div className="max-w-3xl mx-auto px-6 py-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-5 sm:py-6">
         <button
           onClick={() => router.back()}
           className="flex items-center gap-1.5 text-sm text-zinc-400 hover:text-zinc-200 mb-4"
@@ -93,7 +93,7 @@ export default function TaskDetailPage() {
           <ArrowLeft size={15} /> Back
         </button>
 
-        <div className="bg-[#141416] border border-[#1f1f23] rounded-xl p-6">
+        <div className="bg-[#141416] border border-[#1f1f23] rounded-xl p-4 sm:p-6">
           <div className="flex items-start gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-[#1f1f23] flex items-center justify-center text-lg shrink-0">
               {task.poster?.avatarEmoji ?? "?"}
@@ -134,7 +134,7 @@ export default function TaskDetailPage() {
             </span>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-[#1f1f23] flex items-center justify-between">
+          <div className="mt-6 pt-6 border-t border-[#1f1f23] flex items-center justify-between flex-wrap gap-3">
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-bold text-[#ff5c1f]">
                 {formatMoney(task.payout)}

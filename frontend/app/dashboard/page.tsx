@@ -71,16 +71,16 @@ export default function DashboardPage() {
 
   return (
     <AppShell>
-      <div className="max-w-5xl mx-auto px-6 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <div>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="flex items-center justify-between mb-6 gap-3">
+          <div className="min-w-0">
             <div className="flex items-center gap-2 text-zinc-500 text-sm mb-1">
               <Sparkles size={14} className="text-[#ff5c1f]" />
               <span className="uppercase tracking-wider font-semibold">
                 Dashboard
               </span>
             </div>
-            <h1 className="text-3xl font-bold text-zinc-100">
+            <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 truncate">
               {me ? `Welcome back, ${me.name.split(" ")[0]}` : "Dashboard"}
             </h1>
           </div>
@@ -152,7 +152,7 @@ export default function DashboardPage() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full min-w-[640px] text-sm">
                 <thead>
                   <tr className="text-xs uppercase tracking-wider text-zinc-500 bg-[#0f0f11]">
                     <th className="text-left font-medium px-5 py-2.5">Date</th>

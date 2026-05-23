@@ -69,9 +69,9 @@ export default function CompanyPage() {
 
   return (
     <AppShell>
-      <div className="max-w-3xl mx-auto px-6 py-8">
-        <div className="flex items-start gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-[#1f1f23] flex items-center justify-center text-3xl shrink-0">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="flex items-start gap-3 sm:gap-4">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#1f1f23] flex items-center justify-center text-2xl sm:text-3xl shrink-0">
             {company.avatarEmoji}
           </div>
           <div className="flex-1 min-w-0">
@@ -104,7 +104,16 @@ export default function CompanyPage() {
           )}
         </div>
 
-        <div className="mt-6 grid grid-cols-3 gap-3">
+        {isOwner && (
+          <Link
+            href={`/company/${company.id}/new-bounty`}
+            className="sm:hidden mt-4 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#ff5c1f] hover:bg-[#ff7340] text-white text-sm font-semibold w-full"
+          >
+            <Plus size={15} /> Create bounty
+          </Link>
+        )}
+
+        <div className="mt-5 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-3">
           <Stat label="Bounties" value={String(company.tasks.length)} />
           <Stat label="Open" value={String(openCount)} accent={openCount > 0 ? "emerald" : undefined} />
           <Stat label="Total payouts" value={formatMoney(totalPayout)} />
@@ -170,10 +179,10 @@ function Stat({
   accent?: "emerald";
 }) {
   return (
-    <div className="bg-[#141416] border border-[#1f1f23] rounded-xl px-4 py-3">
-      <div className="text-xs uppercase tracking-wider text-zinc-500">{label}</div>
+    <div className="bg-[#141416] border border-[#1f1f23] rounded-xl px-3 sm:px-4 py-3 min-w-0">
+      <div className="text-[10px] sm:text-xs uppercase tracking-wider text-zinc-500 truncate">{label}</div>
       <div
-        className={`mt-1 text-xl font-bold ${
+        className={`mt-1 text-lg sm:text-xl font-bold truncate ${
           accent === "emerald" ? "text-emerald-400" : "text-zinc-100"
         }`}
       >

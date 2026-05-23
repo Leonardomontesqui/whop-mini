@@ -8,25 +8,31 @@ import { WhopLogo } from "./WhopLogo";
 import { useMe } from "@/lib/MeContext";
 import { formatMoney } from "@/lib/api";
 
-export function TopBar() {
+type TopBarProps = {
+  onMenuClick?: () => void;
+};
+
+export function TopBar({ onMenuClick }: TopBarProps = {}) {
   const { me, users, switchTo } = useMe();
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="h-14 border-b border-[#1f1f23] bg-[#0b0b0c] flex items-center px-4 sticky top-0 z-20">
+    <header className="h-14 border-b border-[#1f1f23] bg-[#0b0b0c] flex items-center px-3 sm:px-4 sticky top-0 z-30">
       <button
-        aria-label="Menu"
-        className="w-9 h-9 rounded-md flex items-center justify-center text-zinc-300 hover:bg-[#17171a]"
+        type="button"
+        onClick={onMenuClick}
+        aria-label="Open menu"
+        className="md:hidden w-9 h-9 rounded-md flex items-center justify-center text-zinc-300 hover:bg-[#17171a] shrink-0"
       >
         <Menu size={18} />
       </button>
 
-      <Link href="/" className="ml-1 mr-3">
+      <Link href="/" className="ml-1 mr-2 sm:mr-3 shrink-0">
         <WhopLogo size={22} wordmarkClassName="text-white text-base" />
       </Link>
 
-      <div className="flex-1 max-w-xl">
+      <div className="hidden sm:block flex-1 max-w-xl">
         <div className="relative">
           <Search
             size={15}
@@ -40,7 +46,14 @@ export function TopBar() {
         </div>
       </div>
 
-      <div className="ml-auto flex items-center gap-2">
+      <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+        <button
+          aria-label="Search"
+          className="sm:hidden w-9 h-9 rounded-full bg-[#141416] border border-[#26262a] flex items-center justify-center text-zinc-200 hover:bg-[#1a1a1d]"
+        >
+          <Search size={16} />
+        </button>
+
         <Link
           href="/post"
           className="hidden sm:flex items-center gap-1.5 h-9 px-3 rounded-full bg-[#ff5c1f] hover:bg-[#ff7340] text-white text-sm font-semibold"
@@ -49,13 +62,13 @@ export function TopBar() {
           New company
         </Link>
 
-        <div className="flex items-center h-9 px-3 rounded-full bg-[#141416] border border-[#26262a] text-sm">
-          <span className="text-zinc-500 mr-1">balance</span>
+        <div className="flex items-center h-9 px-2.5 sm:px-3 rounded-full bg-[#141416] border border-[#26262a] text-sm">
+          <span className="hidden sm:inline text-zinc-500 mr-1">balance</span>
           <span className="text-zinc-100 font-semibold">
             {me ? formatMoney(me.balance) : "—"}
           </span>
           {me && me.escrowed > 0 && (
-            <span className="ml-2 pl-2 border-l border-[#26262a] text-[11px] text-amber-400">
+            <span className="hidden md:inline ml-2 pl-2 border-l border-[#26262a] text-[11px] text-amber-400">
               {formatMoney(me.escrowed)} in payouts
             </span>
           )}
@@ -63,7 +76,7 @@ export function TopBar() {
 
         <button
           aria-label="Notifications"
-          className="relative w-9 h-9 rounded-full bg-[#141416] border border-[#26262a] flex items-center justify-center text-zinc-200 hover:bg-[#1a1a1d]"
+          className="hidden sm:flex relative w-9 h-9 rounded-full bg-[#141416] border border-[#26262a] items-center justify-center text-zinc-200 hover:bg-[#1a1a1d]"
         >
           <Bell size={16} />
         </button>
@@ -82,11 +95,11 @@ export function TopBar() {
           {open && (
             <>
               <div
-                className="fixed inset-0 z-30"
+                className="fixed inset-0 z-40"
                 onClick={() => setOpen(false)}
                 aria-hidden
               />
-              <div className="absolute right-0 mt-2 w-64 rounded-xl bg-[#141416] border border-[#26262a] shadow-xl z-40 overflow-hidden">
+              <div className="absolute right-0 mt-2 w-64 rounded-xl bg-[#141416] border border-[#26262a] shadow-xl z-50 overflow-hidden">
                 <div className="px-3 py-2 text-[11px] uppercase tracking-wider text-zinc-500">
                   Switch persona (demo)
                 </div>
