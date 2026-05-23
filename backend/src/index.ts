@@ -7,12 +7,8 @@ import { fileURLToPath } from "node:url";
 import { randomUUID } from "node:crypto";
 import { db, initSchema, writeLedgerEntry } from "./db.ts";
 import { session } from "./store.ts";
-import { seedIfEmpty } from "./seed.ts";
 
 initSchema();
-if (seedIfEmpty()) {
-  console.log("DB was empty — seeded initial users.");
-}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = process.env.DATA_DIR
